@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Tim - Aplikasi Geometris</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+     <nav class="navbar">
+        <ul class="navbar-menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="rumus.html">Rumus</a></li>
+            <li><a href="contact.html">Kontak</a></li>
+        </ul>
+
+        <!-- Bar Akun -->
+        <!-- Bar Akun -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <!-- Bar Akun (akan masuk ke hamburger pada layar kecil) -->
+        <div class="account-bar" id="account-bar">
+            <span id="fotoLogin"></span>
+            <span class="username" id="nameLogin"></span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+        <div class="team-container">
+            <h2>Tim Pengembang Aplikasi</h2>
+            <p>Kami adalah tim yang berdedikasi untuk memberikan pengalaman terbaik dalam mempelajari dan menghitung rumus geometri. Kami percaya bahwa teknologi dapat mempermudah proses belajar, dan aplikasi ini adalah bukti dari komitmen kami untuk menciptakan solusi yang inovatif dan mudah digunakan.</p>
+            
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Anggota Tim 1">
+                    <h3>Nama Anggota 1</h3>
+                    <p>Peran: Frontend Developer</p>
+                    <p>Spesialis dalam menciptakan antarmuka yang user-friendly dan menarik, dengan pengalaman lebih dari 3 tahun di pengembangan web.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Anggota Tim 2">
+                    <h3>Nama Anggota 2</h3>
+                    <p>Peran: Backend Developer</p>
+                    <p>Berfokus pada pengembangan logika backend dan integrasi sistem, dengan keahlian dalam pengelolaan database dan API.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Anggota Tim 3">
+                    <h3>Nama Anggota 3</h3>
+                    <p>Peran: UI/UX Designer</p>
+                    <p>Menjaga pengalaman pengguna yang intuitif dan menarik melalui desain visual yang minimalis dan fungsional.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Anggota Tim 4">
+                    <h3>Nama Anggota 4</h3>
+                    <p>Peran: QA Engineer</p>
+                    <p>Berfokus pada pengujian aplikasi untuk memastikan kualitas dan keandalan, serta mendeteksi dan memperbaiki bug dalam aplikasi.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Anggota Tim 5">
+                    <h3>Nama Anggota 5</h3>
+                    <p>Peran: Project Manager</p>
+                    <p>Memimpin tim dan memastikan proyek berjalan sesuai dengan jadwal dan anggaran, dengan pengalaman dalam manajemen proyek perangkat lunak.</p>
+                </div>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById('menu-toggle').addEventListener('click', function() {
+                    // Toggle visibility for account-bar when hamburger is clicked
+                    document.getElementById('account-bar').classList.toggle('active');
+                });
+            const loggedIn = localStorage.getItem('loggedIn');
+
+            // Jika pengguna belum login, arahkan mereka kembali ke halaman login
+            if (loggedIn !== 'true') {
+                window.location.href = 'login.html'; // Arahkan kembali ke halaman login
+            } else {
+                const userName = localStorage.getItem('userName');
+                const userFoto = localStorage.getItem('userFoto');
+                document.getElementById('nameLogin').innerHTML = `<span>${userName}</span>`;
+                document.getElementById('fotoLogin').innerHTML = `<img src=akun/foto/${userFoto} alt="Foto Profil" class="profile-pic">`;
+
+
+                // Menampilkan nama pengguna yang login (optional)
+                // document.getElementById('welcome-message').innerText = `Selamat datang, ${userName}!`;
+                // window.location.href = 'index.html'; // Arahkan kembali ke halaman login
+
+            }
+        };
+    </script>
+</body>
+</html>

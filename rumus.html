@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Menyertakan style.css -->
+</head>
+<body>
+<nav class="navbar">
+    <ul class="navbar-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="rumus.html">Rumus</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+    </ul>
+
+        <!-- Bar Akun -->
+    <!-- Bar Akun -->
+        <div class="menu-toggle" id="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <!-- Bar Akun (akan masuk ke hamburger pada layar kecil) -->
+        <div class="account-bar" id="account-bar">
+            <span id="fotoLogin"></span>
+            <span class="username" id="nameLogin"></span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+</nav>
+   
+    <div class="container">
+        <div class="item">
+         <section id="home">
+            <p>Temukan rumus dan kalkulator bangun datar di sini!</p>
+            <input type="text" id="search" placeholder="Cari bangun datar..." oninput="searchShape()">
+          </section>
+      </div>
+    </div>
+    <div class="container-rumus">
+        <!-- <section id="shapes"> -->
+          <div id="shapes-list">
+            <div class="shape-item" id="lingkaran">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>1. Lingkaran</h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/lingkaran.png">    
+                                </td>
+                                <td>
+                                    <label for="r_lingkaran">jari-jari Lingkaran (r):</label>
+                                    <input type="number" id="r_lingkaran" placeholder="Jari-jari Lingkaran" required>
+                                    <button onclick="hitungLingkaran()">Hitung Lingkaran</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                    
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Lingkaran</h2>
+                        <hr>
+                        <div id="result_lingkaran" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="persegi">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>2. Persegi </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/persegi.png">    
+                                </td>
+                                <td>
+                                    <label for="s_persegi">panjang sisi  (s):</label>
+                                    <input type="number" id="s_persegi" placeholder="Panjang sisi Persegi" required>
+                                    <button onclick="hitungPersegi()">Hitung Persegi</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                    
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Persegi</h2>
+                        <hr>
+                        <div id="result_persegi" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="persegi panjang">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>3. Persegi Panjang </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/persegi_panjang.png">    
+                                </td>
+                                <td>
+                                    <label for="p_persegi_panjang">panjang sisi (p):</label>
+                                    <input type="number" id="p_persegi_panjang" placeholder="Panjang Persegi Panjang" required>
+                                    <label for="l_persegi_panjang">lebar sisi(l):</label>
+                                    <input type="number" id="l_persegi_panjang" placeholder="Lebar Persegi Panjang" required>
+                                    <button onclick="hitungPersegiPanjang()">Hitung Persegi Panjang</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                    
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Persegi Panjang</h2>
+                        <hr>
+                        <div id="result_persegi_panjang" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="segitiga">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>4. Segitiga </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/segitiga.png">    
+                                </td>
+                                <td>
+                                    <label for="a_segitiga">alas (a):</label>
+                                    <input type="number" id="a_segitiga" placeholder="Alas Segitiga" required>
+                                    <label for="t_segitiga">tinggi (t):</label>
+                                    <input type="number" id="t_segitiga" placeholder="Tinggi Segitiga" required>
+                                     <label for="t_segitiga">Sisi miring (b atau c):</label>
+                                    <input type="number" id="sisiMiringSegitiga" placeholder="Sisi Miring Segitiga" required>
+                                    <button onclick="hitungSegitiga()">Hitung Segitiga</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                    
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Segitiga</h2>
+                        <hr>
+                        <div id="result_segitiga" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="trapesium">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>5. Trapesium </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/trapesium.png">    
+                                </td>
+                                <td>
+                                    <label for="a_trapesium">panjang sisi atas (b):</label>
+                                    <input type="number" id="a_trapesium" placeholder="Panjang sisi atas" required>
+                                    <label for="b_trapesium">panjang sisi bawah (a):</label>
+                                    <input type="number" id="b_trapesium" placeholder="Panjang sisi bawah" required>
+                                    <label for="c_trapesium">Sisi Miring Trapesium (c):</label>
+                                    <input type="number" id="c_trapesium" placeholder="Sisi miring Trapesium" required>
+                                    <label for="t_trapesium">tinggi Trapesium (t atau d):</label>
+                                    <input type="number" id="t_trapesium" placeholder="Tinggi Trapesium" required>
+                                    <button onclick="hitungTrapesium()">Hitung Trapesium</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <h2>Hasil Perhitungan Trapesium</h2>
+                        <hr>
+                        <div id="result_trapesium" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="jajar genjang">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>6. Jajar Genjang </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/jajar_genjang.png">    
+                                </td>
+                                <td>
+                                    <label for="a_jajar_genjang">alas (a atau c):</label>
+                                    <input type="number" id="a_jajar_genjang" placeholder="Panjang alas" required>
+                                    <label for="miring_jajar_genjang">sisi miring (b atau d):</label>
+                                    <input type="number" id="miring_jajar_genjang" placeholder="Sisi miring" required>
+                                    <label for="t_jajar_genjang">tinggi (t):</label>
+                                    <input type="number" id="t_jajar_genjang" placeholder="Tinggi" required>
+                                    <button onclick="hitungJajarGenjang()">Hitung Jajar Genjang</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Jajar Genjang</h2>
+                        <hr>
+                        <div id="result_jajar_genjang" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="belah ketupat">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>7. Belah Ketupat </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/belah_ketupat.png">    
+                                </td>
+                                <td>
+                                    <label for="s_belah_ketupat">Sisi (s):</label>
+                                    <input type="number" id="s_belah_ketupat" placeholder="Panjang sisi" required>
+                                    <label for="d1_belah_ketupat">diagonal 1 (d1):</label>
+                                    <input type="number" id="d1_belah_ketupat" placeholder="Diagonal 1" required>
+                                    <label for="d2_belah_ketupat">diagonal 2 (d2):</label>
+                                    <input type="number" id="d2_belah_ketupat" placeholder="Diagonal 2" required>
+                                    <button onclick="hitungBelahKetupat()">Hitung Belah Ketupat</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Belah Ketupat</h2>
+                        <hr>
+                        <div id="result_belah_ketupat" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape-item" id="layang layang">
+                <div class="item">
+                    <div class="kolom kiri">
+                        <h2>8. Layang - layang </h2> 
+                        <table class="kolom kiri" width="100%">
+                            <tr>
+                                <td>
+                                    <label> Luas = 𝜋 x r 2 </label>
+                                    <label> Keliling = 2 x 𝜋 x r </label>
+                                    <img src="img/Layang-Layang.png">    
+                                </td>
+                                <td>
+                                    <label for="d1_layang_layang">Sisi miring atas (a):</label>
+                                    <input type="number" id="a_layang_layang" placeholder="Sisi miring atas" required>
+                                    <label for="d1_layang_layang">Sisi miring bawah (b):</label>
+                                    <input type="number" id="b_layang_layang" placeholder="Sisi miring bawah" required>
+
+                                    <label for="d1_layang_layang">diagonal 1 (d1):</label>
+                                    <input type="number" id="d1_layang_layang" placeholder="Diagonal 1" required>
+                                    <label for="d2_layang_layang">diagonal 2 (d2):</label>
+                                    <input type="number" id="d2_layang_layang" placeholder="Diagonal 2" required>
+                                    <button onclick="hitungLayangLayang()">Hitung Layang-Layang</button>
+                                </td>
+                            </tr>
+                        </table>         
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="kolom kanan">
+                        <h2>Hasil Perhitungan Layang-layang</h2>
+                        <hr>
+                        <div id="result_layang" class="kolom kanan"></div>
+                    </div>
+                </div>
+            </div>
+
+          </div>
+        <!-- </section> -->
+    </div>
+
+<script src="js/script.js"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById('menu-toggle').addEventListener('click', function() {
+                    // Toggle visibility for account-bar when hamburger is clicked
+                    document.getElementById('account-bar').classList.toggle('active');
+                });
+
+            const loggedIn = localStorage.getItem('loggedIn');
+
+            // Jika pengguna belum login, arahkan mereka kembali ke halaman login
+            if (loggedIn !== 'true') {
+                window.location.href = 'login.html'; // Arahkan kembali ke halaman login
+            } else {
+                const userName = localStorage.getItem('userName');
+                const userFoto = localStorage.getItem('userFoto');
+                document.getElementById('nameLogin').innerHTML = `<span>${userName}</span>`;
+                document.getElementById('fotoLogin').innerHTML = `<img src=akun/foto/${userFoto} alt="Foto Profil" class="profile-pic">`;
+
+
+                // Menampilkan nama pengguna yang login (optional)
+                // document.getElementById('welcome-message').innerText = `Selamat datang, ${userName}!`;
+                // window.location.href = 'index.html'; // Arahkan kembali ke halaman login
+
+            }
+        };
+    </script>
+</body>
+</html>
